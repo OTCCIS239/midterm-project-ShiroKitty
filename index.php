@@ -10,8 +10,33 @@ require_once('./includes/init.php');
 
 ?>
 
+<!--
 This is my super awesome Guitar Shop!
 
 - All Orders
 - Unshipped Orders
 - Products
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Guitar Shop</title>
+</head>
+<body>
+    <h1>Tj's Guitar Shop</h1>
+   
+    <div>
+        <nav>
+           <ul>
+               <li>Guitars</li>
+               <li>Basses</li>
+               <li>Drums</li>
+           </ul> 
+        </nav>
+    </div> 
+    
+</body>
+</html>
