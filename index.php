@@ -7,30 +7,23 @@
 require_once('./includes/init.php');
 
 // Here you might connect to the database and show off some of your newest guitars.
+require_once('./includes/db.php');
 
 ?>
-
-<!--
-This is my super awesome Guitar Shop!
-
-- All Orders
-- Unshipped Orders
-- Products
--->
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>My Guitar Shop</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
 <body>
     <h1>Tj's Guitar Shop</h1>
    
     <div>
         <nav>
-           <ul>
+           <ul> 
                <li>Guitars</li>
                <li>Basses</li>
                <li>Drums</li>

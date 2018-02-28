@@ -1,5 +1,14 @@
 <?php
 
+$host = getenv('DB_HOST');
+$port = getenv('DB_PORT');
+$database = getenv('DB_DATABASE');
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
+$dsn = "mysql:host=localhost;dbname=guitars";
+
+
+
 // You might connect to your database here. However, don't
 // hard-code your database credentials here! Instead,
 // copy the file `/.env.example` to `/.env`, and
