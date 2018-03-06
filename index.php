@@ -1,13 +1,8 @@
 <?php
-
-// This file initializes some goodies that will make your
-// development experience nicer! If your PHP throws an
-// error, we will show you exactly what went wrong!
-// This line should be on every page you create.
 require_once('./includes/init.php');
-
-// Here you might connect to the database and show off some of your newest guitars.
 require_once('./includes/db.php');
+
+$queryOrders = 'SELECT * FROM orders'
 
 ?>
 
@@ -15,11 +10,14 @@ require_once('./includes/db.php');
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Guitar Shop</title>
-    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="css/foundation.css" type="text/css">
+    <link rel="stylesheet" href="css/app.css" type="text/css">
 </head>
 <body>
-    <h1>Tj's Guitar Shop</h1>
+    <h2>Tj's Guitar Shop</h2>
    
     <div>
         <nav>
@@ -27,9 +25,11 @@ require_once('./includes/db.php');
                <li>Guitars</li>
                <li>Basses</li>
                <li>Drums</li>
+               <li>Orders</li>
            </ul> 
         </nav>
-    </div> 
-    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="scripts/guitar-shop.js"></script>
 </body>
 </html>
