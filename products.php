@@ -2,10 +2,18 @@
 require_once('./includes/init.php');
 require_once('./includes/db.php');
 
-$getProducts = 'SELECT productName, description, listPrice
-                FROM products';
-$get1 = $conn -> prepare($getProducts);
-$get1 -> bindValue();
+$product_ID = filter_input(INPUT_GET, 'product_ID', FILTER_VALIDATE_INT);
+$product_ID = 1;
+// if ($product_ID == null || $product_ID == false){
+//     $product_ID = 1;
+// }
+$getProducts = 'SELECT * FROM products
+                WHERE productID = :product_ID';
+$getProds = $conn -> prepare($getProducts);
+$getProds -> bindValue(':product_ID', $product_ID);
+$getProds  -> execute();
+$products = $getProds -> fetchAll();
+$getProds -> closeCursor();
 
 ?>
 
@@ -21,19 +29,19 @@ $get1 -> bindValue();
 </head>
 <body>
     <?php include('./includes/navbar.php') ?>
-    <?php echo $getProducts; ?>
     <table>
         <tr>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
         </tr>
-        <?php
-            // while($row1 = )
-        ?>
-        <tr>
-            <td></td>
-        </tr>
+        <?php foreach($products as $product) : ?>
+            <tr>
+                <td><?php echo $product['productName']; ?></td>
+                <td><?php echo $product['description']; ?></td>
+                <td><?php echo $product['listPrice']; ?></td>
+            </tr>
+        <?php endforeach; ?>
     </table>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="scripts/guitar-shop.js"></script>
