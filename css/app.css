@@ -1,4 +1,19 @@
-ul li {
-    list-style: none;
-    display: inline-block;
-} 
+body {
+    background-color: #d9d9d9;
+}
+
+/* Navar */
+.menu{
+    background-image: url("https://media.freestocktextures.com/cache/36/c8/36c84e4a43f24c7f2bbd3d29bd1ffbef.jpg");
+    /* padding: 10px; */
+    border-bottom: 5px solid #663300;
+}
+li .nav{
+    padding: 20px;
+    color: #663300;
+    font-weight: bold;
+}
+li .nav:hover{
+    background-color: #663300;
+    color: white;
+}
