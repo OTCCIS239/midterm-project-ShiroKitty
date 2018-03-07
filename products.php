@@ -3,9 +3,9 @@ require_once('./includes/init.php');
 require_once('./includes/db.php');
 
 $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
-if ($category_id == null || $category_id == false) {
-    $category_id = 1;
-}
+// if ($category_id == null || $category_id == false) {
+//     $category_id = 1;
+// }
 
 //Gets the name for the selected category
     $queryCategory = 'SELECT * FROM categories
@@ -27,8 +27,7 @@ if ($category_id == null || $category_id == false) {
 
     //Gets products for the selected category
     $queryProducts = 'SELECT * FROM products
-                    WHERE categoryID = :category_id
-                    ORDER BY `productName`
+                    ORDER BY `categoryID`
                     ';
     $statement3 = $conn -> prepare($queryProducts);
     $statement3 -> bindValue(':category_id', $category_id);
@@ -52,15 +51,26 @@ if ($category_id == null || $category_id == false) {
     <?php include('./includes/navbar.php') ?>
     <table>
         <tr>
+            <th>Category</th>
             <th>Name</th>
-            <th>Description</th>
+            <!-- <th>Description</th> -->
             <th>Price</th>
         </tr>
         <?php foreach($products as $product) : ?>
-            <tr>
-                <td><?php echo $product['productID']; ?></td>
+            <tr class="dbRow">
+                <td>
+                    <?php
+                        if($product['categoryID'] == 1){
+                            echo 'Guitars';
+                        } elseif($product['categoryID'] == 2) {
+                            echo 'Basses';
+                        } elseif($product['categoryID'] == 3) {
+                            echo 'Drums';
+                        }
+                    ?>
+                </td>
                 <td><?php echo $product['productName']; ?></td>
-                <td><?php echo $product['description']; ?></td>
+                <!-- <td><?php echo $product['description']; ?></td> -->
                 <td><?php echo $product['listPrice']; ?></td>
             </tr>
         <?php endforeach; ?>

@@ -17,3 +17,14 @@ li .nav:hover{
     background-color: #663300;
     color: white;
 }
+
+/* Tables */
+.dbRow{
+    text-align: center;
+
+}
+
+.dbRow:hover{
+    border: 5px solid #663300;
+    cursor: default;
+}
