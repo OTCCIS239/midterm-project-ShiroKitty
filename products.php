@@ -4,7 +4,9 @@ require_once('./includes/db.php');
 
 $getProducts = 'SELECT productName, description, listPrice
                 FROM products';
-// $get1 =
+$get1 = $conn -> prepare($getProducts);
+$get1 -> bindValue();
+
 ?>
 
 <!DOCTYPE html>
