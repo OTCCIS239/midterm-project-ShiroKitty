@@ -2,18 +2,39 @@
 require_once('./includes/init.php');
 require_once('./includes/db.php');
 
-$product_ID = filter_input(INPUT_GET, 'product_ID', FILTER_VALIDATE_INT);
-$product_ID = 1;
-// if ($product_ID == null || $product_ID == false){
-//     $product_ID = 1;
-// }
-$getProducts = 'SELECT * FROM products
-                WHERE productID = :product_ID';
-$getProds = $conn -> prepare($getProducts);
-$getProds -> bindValue(':product_ID', $product_ID);
-$getProds  -> execute();
-$products = $getProds -> fetchAll();
-$getProds -> closeCursor();
+$category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
+if ($category_id == null || $category_id == false) {
+    $category_id = 1;
+}
+
+//Gets the name for the selected category
+    $queryCategory = 'SELECT * FROM categories
+                    WHERE categoryID = :category_id';
+    $statement1 = $conn -> prepare($queryCategory);
+    $statement1 -> bindValue(':category_id', $category_id);
+    $statement1 -> execute();
+    $category = $statement1 -> fetch();
+    $category_name = $category['categoryName'];
+    $statement1 -> closeCursor();
+
+    //Get all categories
+    $queryAllCategories = 'SELECT * FROM categories
+                        ORDER BY categoryID';
+    $statement2 = $conn -> prepare($queryAllCategories);
+    $statement2 -> execute();
+    $categories = $statement2 -> fetchAll();
+    $statement2 -> closeCursor();
+
+    //Gets products for the selected category
+    $queryProducts = 'SELECT * FROM products
+                    WHERE categoryID = :category_id
+                    ORDER BY `productName`
+                    ';
+    $statement3 = $conn -> prepare($queryProducts);
+    $statement3 -> bindValue(':category_id', $category_id);
+    $statement3 -> execute();
+    $products = $statement3 -> fetchAll();
+    $statement3 -> closeCursor();
 
 ?>
 
@@ -37,6 +58,7 @@ $getProds -> closeCursor();
         </tr>
         <?php foreach($products as $product) : ?>
             <tr>
+                <td><?php echo $product['productID']; ?></td>
                 <td><?php echo $product['productName']; ?></td>
                 <td><?php echo $product['description']; ?></td>
                 <td><?php echo $product['listPrice']; ?></td>
