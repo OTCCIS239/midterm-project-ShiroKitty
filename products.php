@@ -8,11 +8,11 @@ $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
     $queryProducts = 'SELECT * FROM products
                     ORDER BY `categoryID`
                     ';
-    $statement3 = $conn -> prepare($queryProducts);
-    $statement3 -> bindValue(':category_id', $category_id);
-    $statement3 -> execute();
-    $products = $statement3 -> fetchAll();
-    $statement3 -> closeCursor();
+    $statement = $conn -> prepare($queryProducts);
+    $statement -> bindValue(':category_id', $category_id);
+    $statement -> execute();
+    $products = $statement -> fetchAll();
+    $statement -> closeCursor();
 
 ?>
 
