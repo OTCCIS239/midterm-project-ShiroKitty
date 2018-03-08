@@ -1,7 +1,7 @@
 <?php
 
 require_once('./includes/init.php');
-require_once('./includes/db.php');
+// require_once('./includes/db.php');
 
 $queryOrders = 'SELECT * FROM orders';
 
