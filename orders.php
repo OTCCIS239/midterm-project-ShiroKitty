@@ -17,7 +17,6 @@ $queryProducts = 'SELECT * FROM products
                 INNER JOIN orders ON orderitems.orderID = orders.orderID
                 INNER JOIN customers ON orders.customerID = customers.customerID
                 INNER JOIN addresses ON addresses.addressID = customers.billingAddressID
-                GROUP BY quantity
                     ';
     $statement3 = $conn -> prepare($queryProducts);
     $statement3 -> bindValue(':getOrders', $getOrders);
@@ -46,7 +45,12 @@ $queryProducts = 'SELECT * FROM products
             <th>Ship Date</th>
             <th>Credit Card</th>
             <th>Billing Address</th>
-            <th>Amt Ordered</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Discount Amt</th>
+            <th>Tax Amt</th>
+            <th>Shipping</th>
+            <th>Total</th>
         </tr>
         <?php foreach($orders as $order) : ?>
             <tr class="dbRow">
@@ -63,7 +67,13 @@ $queryProducts = 'SELECT * FROM products
                 </td>
                 <td><?php echo $order['cardNumber']; ?></td>
                 <td><?php echo $order['line1'] ?></td>
-                <td><?php echo $order['line1'] ?></td>
+                <td><?php echo $order['productName'] ?></td>
+                <td><?php echo '$'.$order['listPrice'] ?></td>
+                <td><?php echo '$'.$order['discountAmount'] ?></td>
+                <td><?php echo '$'.$order['taxAmount'] ?></td>
+                <td><?php echo '$'.$order['shipAmount'] ?></td>
+                <?php $total = $order['listPrice'] +  $order['taxAmount'] + $order['shipAmount'] - $order['discountAmount']?>
+                <td><?php echo '$'.$total ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
