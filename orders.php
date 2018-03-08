@@ -1,6 +1,8 @@
 <?php
 require_once('./includes/init.php');
 require_once('./includes/db.php');
+
+
 ?>
 
 <!DOCTYPE html>

@@ -3,29 +3,8 @@ require_once('./includes/init.php');
 require_once('./includes/db.php');
 
 $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
-// if ($category_id == null || $category_id == false) {
-//     $category_id = 1;
-// }
 
-//Gets the name for the selected category
-    $queryCategory = 'SELECT * FROM categories
-                    WHERE categoryID = :category_id';
-    $statement1 = $conn -> prepare($queryCategory);
-    $statement1 -> bindValue(':category_id', $category_id);
-    $statement1 -> execute();
-    $category = $statement1 -> fetch();
-    $category_name = $category['categoryName'];
-    $statement1 -> closeCursor();
-
-    //Get all categories
-    $queryAllCategories = 'SELECT * FROM categories
-                        ORDER BY categoryID';
-    $statement2 = $conn -> prepare($queryAllCategories);
-    $statement2 -> execute();
-    $categories = $statement2 -> fetchAll();
-    $statement2 -> closeCursor();
-
-    //Gets products for the selected category
+    //Gets products for category
     $queryProducts = 'SELECT * FROM products
                     ORDER BY `categoryID`
                     ';
