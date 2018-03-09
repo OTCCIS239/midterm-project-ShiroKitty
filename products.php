@@ -22,6 +22,7 @@ $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/guitarBrown.ico">
     <title>Products</title>
     <link rel="stylesheet" href="css/foundation.css" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
@@ -33,11 +34,10 @@ $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
         <tr>
             <th>Category</th>
             <th>Name</th>
-            <!-- <th>Description</th> -->
             <th>Price</th>
         </tr>
         <?php foreach($products as $product) : ?>
-            <tr class="dbRow" onclick="function()">
+            <tr class="dbRow" onclick="displayProduct('<?php echo $product['productName'] ?>', `<?php echo $product['description'] ?>`)">
                 <td>
                     <?php
                         if($product['categoryID'] == 1){
@@ -49,10 +49,9 @@ $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
                         }
                     ?>
                 </td>
-                <td><?php echo $product['productName']; ?></td>
-                <!-- <td><?php echo $product['description']; ?></td> -->
+                <td name="pName"><?php echo $product['productName']; ?></td>
                 <td><?php echo $product['listPrice']; ?></td>
-            </tr>
+                </tr>
         <?php endforeach; ?>
     </table>
     <script src="scripts/app.js"></script>

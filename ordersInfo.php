@@ -25,6 +25,7 @@ $queryProducts = 'SELECT * FROM products
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/guitarBrown.ico">
     <title>Orders</title>
     <link rel="stylesheet" href="css/foundation.css" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
@@ -55,7 +56,7 @@ $queryProducts = 'SELECT * FROM products
                         if($order['shipDate'] != null){
                             echo $order['shipDate'];
                         } else {
-                            echo 'No ship date found';
+                            echo 'Not yet shipped';
                         }
                     ?>
                 </td>

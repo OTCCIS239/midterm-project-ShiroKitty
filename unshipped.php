@@ -11,6 +11,7 @@ INNER JOIN orderitems on products.productID = orderitems.productID
 INNER JOIN orders ON orderitems.orderID = orders.orderID
 INNER JOIN customers ON orders.customerID = customers.customerID
 INNER JOIN addresses ON addresses.addressID = customers.billingAddressID
+WHERE shipDate IS NULL
 GROUP BY orderitems.orderID
 ';
     $statement3 = $conn -> prepare($queryProducts);
@@ -28,7 +29,7 @@ GROUP BY orderitems.orderID
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/guitarBrown.ico">
-    <title>Orders</title>
+    <title>Unshipped Orders</title>
     <link rel="stylesheet" href="css/foundation.css" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

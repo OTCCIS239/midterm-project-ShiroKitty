@@ -1,7 +1,19 @@
 body {
     background-color: #f3e6d8;
 }
-
+/*Index Page*/
+.indexHeader{
+    margin: auto;
+    background-color: #663300;
+    color: #f3e6d8;
+    border: 5px solid black;
+}
+.grid-container{
+    
+}
+.iHeaders{
+    text-align: center;
+}
 /* Navar */
 .menu{
     background-image: url("https://media.freestocktextures.com/cache/36/c8/36c84e4a43f24c7f2bbd3d29bd1ffbef.jpg");
