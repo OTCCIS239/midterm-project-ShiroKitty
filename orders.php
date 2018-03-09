@@ -7,16 +7,16 @@ $getOrders = filter_input(INPUT_GET, 'gopher', FILTER_VALIDATE_INT);
 
 //pulls data from products, orderitems, orders, customers, and addresses
 $queryProducts = 'SELECT * FROM products
-INNER JOIN orderitems on products.productID = orderitems.productID
-INNER JOIN orders ON orderitems.orderID = orders.orderID
+INNER JOIN orderItems on products.productID = orderItems.productID
+INNER JOIN orders ON orderItems.orderID = orders.orderID
 INNER JOIN customers ON orders.customerID = customers.customerID
 INNER JOIN addresses ON addresses.addressID = customers.billingAddressID';
 
-    $statement3 = $conn -> prepare($queryProducts);
-    $statement3 -> bindValue(':gopher', $getOrders);
-    $statement3 -> execute();
-    $orders = $statement3 -> fetchAll();
-    $statement3 -> closeCursor();
+    $statement = $conn -> prepare($queryProducts);
+    $statement -> bindValue(':gopher', $getOrders);
+    $statement -> execute();
+    $orders = $statement -> fetchAll();
+    $statement -> closeCursor();
 
 ?>
 
@@ -41,7 +41,6 @@ INNER JOIN addresses ON addresses.addressID = customers.billingAddressID';
             <th>Order Date</th>
         </tr>
         <?php foreach($orders as $order) : ?>
-               <p>This be a test!</p>
                 <tr class="dbRow" onclick="displayOrder(`<?= $order['orderDate'] ?>`, `<?= $order['shipDate'] ?>`, <?= $order['cardNumber'] ?>, `<?= $order['line1'] ?>`, <?= $order['listPrice'] ?>, <?= $order['discountAmount'] ?>, <?= $order['taxAmount'] ?>, <?= $order['shipAmount'] ?>)">
                     <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
                     <td><?php echo $order['emailAddress']; ?></td>
