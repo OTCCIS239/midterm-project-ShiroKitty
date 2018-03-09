@@ -72,6 +72,11 @@ $queryProducts = 'SELECT * FROM products
             </tr>
         <?php endforeach; ?>
     </table>
+    <div class="grid-container">
+        <div class="grid-x">
+            <a href="orders.php" class="button expand navBtn">Return</a>
+        </div>
+    </div>
     <script src="scripts/app.js"></script>
 </body>
 </html>

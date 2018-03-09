@@ -43,15 +43,18 @@ GROUP BY orderitems.orderID
             <th>Order Date</th>
         </tr>
         <?php foreach($orders as $order) : ?>
-            <a href="ordersInfo.php">
-                <tr class="dbRow orders">
-                    <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
-                    <td><?php echo $order['emailAddress']; ?></td>
-                    <td><?php echo $order['line1'] ?></td>
-                </tr>
-            </a>
+            <tr class="dbRow" onclick="displayOrder(`<?= $order['orderDate'] ?>`, `<?= $order['shipDate'] ?>`, <?= $order['cardNumber'] ?>, `<?= $order['line1'] ?>`, <?= $order['listPrice'] ?>, <?= $order['discountAmount'] ?>, <?= $order['taxAmount'] ?>, <?= $order['shipAmount'] ?>)">
+                <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
+                <td><?php echo $order['emailAddress']; ?></td>
+                <td><?php echo $order['line1'] ?></td>
+            </tr>
         <?php endforeach; ?>
     </table>
+    <div class="grid-container">
+        <div class="grid-x">
+            <a href="orders.php" class="button expand navBtn">Return</a>
+        </div>
+    </div>
     <script src="scripts/app.js"></script>
 </body>
 </html>

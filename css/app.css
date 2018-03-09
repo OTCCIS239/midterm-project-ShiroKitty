@@ -6,17 +6,45 @@ body {
     margin: auto;
     background-color: #663300;
     color: #f3e6d8;
-    border: 5px solid black;
-}
-.grid-container{
-    
+    border: 2px solid black;
+    margin: 20px 0px 0px 0px;
 }
 .iHeaders{
     text-align: center;
 }
+.indexBody{
+    background-color: #dbb48a;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.indexBody div{
+    text-align: center;
+}
+
+.indexBody div .navBtn{
+    background-color: #663300;
+}
+
+.iLeft{
+    margin-right: 20px;
+}
+.iRight{
+    margin-left: 20px;
+}
+/* Orders Page */
+.navBtn{
+    border: 2px solid #663300;
+    background-color: #b35900;
+}
+.navBtn:hover{
+    background-color: #B8BABF;
+    color: black;
+}
+
 /* Navar */
 .menu{
-    background-image: url("https://media.freestocktextures.com/cache/36/c8/36c84e4a43f24c7f2bbd3d29bd1ffbef.jpg");
+    background-image: url("https://images.freecreatives.com/wp-content/uploads/2016/01/Free-Photoshop-Purity-Wood-Texture-480x368.jpg");
     /* padding: 10px; */
     border-bottom: 5px solid #663300;
 }

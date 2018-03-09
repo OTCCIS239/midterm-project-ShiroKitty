@@ -10,9 +10,8 @@ $queryProducts = 'SELECT * FROM products
 INNER JOIN orderitems on products.productID = orderitems.productID
 INNER JOIN orders ON orderitems.orderID = orders.orderID
 INNER JOIN customers ON orders.customerID = customers.customerID
-INNER JOIN addresses ON addresses.addressID = customers.billingAddressID
-GROUP BY orderitems.orderID
-';
+INNER JOIN addresses ON addresses.addressID = customers.billingAddressID';
+
     $statement3 = $conn -> prepare($queryProducts);
     $statement3 -> bindValue(':gopher', $getOrders);
     $statement3 -> execute();
@@ -42,15 +41,21 @@ GROUP BY orderitems.orderID
             <th>Order Date</th>
         </tr>
         <?php foreach($orders as $order) : ?>
-            <a href="ordersInfo.php">
-                <tr class="dbRow orders">
+                <tr class="dbRow" onclick="displayOrder(`<?= $order['orderDate'] ?>`, `<?= $order['shipDate'] ?>`, <?= $order['cardNumber'] ?>, `<?= $order['line1'] ?>`, <?= $order['listPrice'] ?>, <?= $order['discountAmount'] ?>, <?= $order['taxAmount'] ?>, <?= $order['shipAmount'] ?>)">
                     <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
                     <td><?php echo $order['emailAddress']; ?></td>
                     <td><?php echo $order['line1'] ?></td>
                 </tr>
-            </a>
         <?php endforeach; ?>
     </table>
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="button-group expanded stacked-for-small">
+                <a href="ordersInfo.php" class="button navBtn">Detailed Order View</a>
+                <a href="unshipped.php" class="button navBtn">Show Unshipped Orders</a>
+            </div>
+        </div>
+    </div>
     <script src="scripts/app.js"></script>
 </body>
 </html>

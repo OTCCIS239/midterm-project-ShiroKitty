@@ -22,15 +22,27 @@ $queryOrders = 'SELECT * FROM orders';
 <body>
     <?php include('./includes/navbar.php') ?>
     <div class="grid-container">
-        <div class="grid-x iHeaders">
-            <div class="cell small-4 indexHeader"><h2>Products</h2></div>
-            <div class="cell small-4 indexHeader"><h2>Orders</h2></div>
-            <div class="cell small-4 indexHeader"><h2>Shipped Orders</h2></div>
+        <div class="grid-x iHeaders padMe">
+            <div class="cell small-5 indexHeader iLeft">
+                <h2>Products</h2>
+            </div>
+            <div class="cell small-5 indexHeader iRight">
+                <h2>Orders</h2>
+            </div>
         </div>
         <div class="grid-x">
-            <div class="cell small-4"><h4>Come take a look at the quality guitars we have for sale. I promise you won't be disappointed!</h4></div>
-            <div class="cell small-4"><h4>Products</h4></div>
-            <div class="cell small-4"><h4>Products</h4></div>
+            <div class="cell small-5 indexBody iLeft">
+                <h4>Here you'll find an inventory of all our products.</h4>
+                <div>
+                    <a href="orders.php" class="button expand navBtn">Go To Products</a>
+                </div>
+            </div>
+            <div class="cell small-5 indexBody iRight">
+                <h4>This is where you'll find detailed information on customer orders.</h4>
+                <div>
+                    <a href="orders.php" class="button expand navBtn">Go To Orders</a>
+                </div>
+            </div>
         </div>
     </div>
     <script src="scripts/app.js"></script>
