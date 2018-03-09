@@ -41,6 +41,7 @@ INNER JOIN addresses ON addresses.addressID = customers.billingAddressID';
             <th>Order Date</th>
         </tr>
         <?php foreach($orders as $order) : ?>
+               <p>This be a test!</p>
                 <tr class="dbRow" onclick="displayOrder(`<?= $order['orderDate'] ?>`, `<?= $order['shipDate'] ?>`, <?= $order['cardNumber'] ?>, `<?= $order['line1'] ?>`, <?= $order['listPrice'] ?>, <?= $order['discountAmount'] ?>, <?= $order['taxAmount'] ?>, <?= $order['shipAmount'] ?>)">
                     <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
                     <td><?php echo $order['emailAddress']; ?></td>
