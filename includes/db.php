@@ -6,7 +6,7 @@ $database = getenv('DB_DATABASE');
 $username = getenv('DB_USERNAME');
 $password = getenv('DB_PASSWORD');
 
-$dsn = "mysql:host=localhost;dbname=guitars;";
+$dsn = "mysql:host=$host;dbname=$database;port=$port;";
 $conn = new PDO($dsn, $username, $password);
 
 
