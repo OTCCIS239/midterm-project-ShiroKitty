@@ -25,6 +25,7 @@ $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
     <title>Products</title>
     <link rel="stylesheet" href="css/foundation.css" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <?php include('./includes/navbar.php') ?>
@@ -36,7 +37,7 @@ $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
             <th>Price</th>
         </tr>
         <?php foreach($products as $product) : ?>
-            <tr class="dbRow">
+            <tr class="dbRow" onclick="function()">
                 <td>
                     <?php
                         if($product['categoryID'] == 1){
@@ -54,7 +55,6 @@ $category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
             </tr>
         <?php endforeach; ?>
     </table>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="scripts/guitar-shop.js"></script>
+    <script src="scripts/app.js"></script>
 </body>
 </html>

@@ -16,11 +16,11 @@ $queryOrders = 'SELECT * FROM orders';
     <title>My Guitar Shop</title>
     <link rel="stylesheet" href="css/foundation.css" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <?php include('./includes/navbar.php') ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="scripts/guitar-shop.js"></script>
+    
+    <script src="scripts/app.js"></script>
 </body>
 </html>

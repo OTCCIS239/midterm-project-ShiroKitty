@@ -1,4 +1,3 @@
-
 <?php
 require_once('./includes/init.php');
 require_once('./includes/db.php');
@@ -11,7 +10,6 @@ $queryProducts = 'SELECT * FROM products
                 INNER JOIN orders ON orderitems.orderID = orders.orderID
                 INNER JOIN customers ON orders.customerID = customers.customerID
                 INNER JOIN addresses ON addresses.addressID = customers.billingAddressID
-                GROUP BY orderitems.orderID
                     ';
     $statement3 = $conn -> prepare($queryProducts);
     $statement3 -> bindValue(':gopher', $getOrders);
@@ -36,18 +34,41 @@ $queryProducts = 'SELECT * FROM products
     <?php include('./includes/navbar.php') ?>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Order ID</th>
             <th>Order Date</th>
+            <th>Ship Date</th>
+            <th>Credit Card</th>
+            <th>Billing Address</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Discount Amt</th>
+            <th>Tax Amt</th>
+            <th>Shipping</th>
+            <th>Total</th>
         </tr>
         <?php foreach($orders as $order) : ?>
-            <a href="ordersInfo.php">
-                <tr class="dbRow orders">
-                    <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
-                    <td><?php echo $order['emailAddress']; ?></td>
-                    <td><?php echo $order['line1'] ?></td>
-                </tr>
-            </a>
+            <tr class="dbRow">
+                <td><?php echo $order['orderID']; ?></td>
+                <td><?php echo $order['orderDate']; ?></td>
+                <td>
+                    <?php
+                        if($order['shipDate'] != null){
+                            echo $order['shipDate'];
+                        } else {
+                            echo 'No ship date found';
+                        }
+                    ?>
+                </td>
+                <td><?php echo $order['cardNumber']; ?></td>
+                <td><?php echo $order['line1'] ?></td>
+                <td><?php echo $order['productName'] ?></td>
+                <td><?php echo '$'.$order['listPrice'] ?></td>
+                <td><?php echo '$'.$order['discountAmount'] ?></td>
+                <td><?php echo '$'.$order['taxAmount'] ?></td>
+                <td><?php echo '$'.$order['shipAmount'] ?></td>
+                <?php $total = $order['listPrice'] +  $order['taxAmount'] + $order['shipAmount'] - $order['discountAmount']?>
+                <td><?php echo '$'.$total ?></td>
+            </tr>
         <?php endforeach; ?>
     </table>
     <script src="scripts/app.js"></script>

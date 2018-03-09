@@ -1,4 +1,3 @@
-
 <?php
 require_once('./includes/init.php');
 require_once('./includes/db.php');
@@ -8,16 +7,16 @@ $getOrders = filter_input(INPUT_GET, 'gopher', FILTER_VALIDATE_INT);
 //pulls data from products, orderitems, orders, customers, and addresses
 $queryProducts = 'SELECT * FROM products
                 INNER JOIN orderitems on products.productID = orderitems.productID
-                INNER JOIN orders ON orderitems.orderID = orders.orderID
+                INNER JOIN orders ON orderitems.ordrerID = orders.orderID
                 INNER JOIN customers ON orders.customerID = customers.customerID
                 INNER JOIN addresses ON addresses.addressID = customers.billingAddressID
-                GROUP BY orderitems.orderID
+                GROUP BY orderItems.orderID
                     ';
     $statement3 = $conn -> prepare($queryProducts);
     $statement3 -> bindValue(':gopher', $getOrders);
     $statement3 -> execute();
     $orders = $statement3 -> fetchAll();
-    $statement3 -> closeCursor();
+    $statement3 -> closeCursor();h
 
 ?>
 
@@ -41,8 +40,8 @@ $queryProducts = 'SELECT * FROM products
             <th>Order Date</th>
         </tr>
         <?php foreach($orders as $order) : ?>
-            <a href="ordersInfo.php">
-                <tr class="dbRow orders">
+            <a href="ordersInfo.html">
+                <tr class="dbRow">
                     <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
                     <td><?php echo $order['emailAddress']; ?></td>
                     <td><?php echo $order['line1'] ?></td>

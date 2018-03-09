@@ -1,5 +1,5 @@
 body {
-    background-color: #d9d9d9;
+    background-color: #f3e6d8;
 }
 
 /* Navar */
@@ -25,6 +25,7 @@ li .nav:hover{
 }
 
 .dbRow:hover{
-    border: 5px solid #663300;
+    /* border: 5px solid #663300; */
+    background-color: #ff9933;
     cursor: default;
 }
