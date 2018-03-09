@@ -6,11 +6,11 @@ $getOrders = filter_input(INPUT_GET, 'gopher', FILTER_VALIDATE_INT);
 
 //pulls data from products, orderitems, orders, customers, and addresses
 $queryProducts = 'SELECT * FROM products
-                INNER JOIN orderitems on products.productID = orderitems.productID
-                INNER JOIN orders ON orderitems.orderID = orders.orderID
-                INNER JOIN customers ON orders.customerID = customers.customerID
-                INNER JOIN addresses ON addresses.addressID = customers.billingAddressID
-                    ';
+INNER JOIN orderItems on products.productID = orderItems.productID
+INNER JOIN orders ON orderItems.orderID = orders.orderID
+INNER JOIN customers ON orders.customerID = customers.customerID
+INNER JOIN addresses ON addresses.addressID = customers.billingAddressID
+';
     $statement3 = $conn -> prepare($queryProducts);
     $statement3 -> bindValue(':gopher', $getOrders);
     $statement3 -> execute();
