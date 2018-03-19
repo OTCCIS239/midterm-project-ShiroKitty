@@ -1,5 +1,11 @@
 
 <?php
+/*
+    Laravel collections - illuminate/support
+    http://carbon.nesbot.com/docs/#api-comparison
+*/
+use Carbon\Carbon;
+// $carbon = new Carbon();
 require_once('./includes/init.php');
 require_once('./includes/db.php');
 
@@ -44,7 +50,10 @@ INNER JOIN addresses ON addresses.addressID = customers.billingAddressID';
                 <tr class="dbRow" onclick="displayOrder(`<?= $order['orderDate'] ?>`, `<?= $order['shipDate'] ?>`, <?= $order['cardNumber'] ?>, `<?= $order['line1'] ?>`, <?= $order['listPrice'] ?>, <?= $order['discountAmount'] ?>, <?= $order['taxAmount'] ?>, <?= $order['shipAmount'] ?>)">
                     <td><?php echo ($order['firstName'] . ' ' . $order['lastName']); ?></td>
                     <td><?php echo $order['emailAddress']; ?></td>
-                    <td><?php echo $order['line1'] ?></td>
+                    <td><?php 
+                            // Carbon::setToStringFormat();
+                            echo Carbon::parse($order['orderDate']); 
+                        ?></td>
                 </tr>
         <?php endforeach; ?>
     </table>
